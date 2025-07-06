@@ -6,6 +6,23 @@ Description: >
   Projeto da bia com sam da Formacao AWS
   
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Parameters:
+  SecurityGroup:
+    Type: String
+    Description: Security Group ID
+  DBName:
+    Type: String
+    Description: Database Name
+  DBUser:
+    Type: String
+    Description: Database User
+  DBPassword:
+    Type: String
+    Description: Database Password
+  DBHost:
+    Type: String
+    Description: Database Host
+
 Globals:
   Function:
     Timeout: 3   
@@ -14,7 +31,20 @@ Globals:
     Cors:
       AllowMethods: "'GET, PUT, POST, DELETE, OPTIONS'"
       AllowOrigin: "'*'"
-      AllowHeaders: "'Content-type, x-api-key'"     
+      AllowHeaders: "'Content-type, x-api-key'"
+  Environment:
+   Variables:
+     DB_USER: !Ref DBUser
+     DB_PWD: !Ref DBPassword
+     DB_HOST: !Ref DBHost
+     DB_PORT: 5432
+     DB_NAME: !Ref DBName
+  VpcConfig:
+    SecurityGroupIds:
+      - !Ref SecurityGroup
+    SubnetIds:
+      - subnet-07f7b8cd9369a5baf
+      - subnet-0a4fff6f9ce8d96fb     
 Resources:  
   TarefasFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
