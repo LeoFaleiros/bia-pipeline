@@ -30,8 +30,8 @@ Globals:
       SecurityGroupIds:
       - !Ref SecurityGroup
       SubnetIds:
-      - subnet-0ac54050e4ce3f454
-      - subnet-06a2d3aa108305b7f  
+        - subnet-07f7b8cd9369a5baf
+        - subnet-0a4fff6f9ce8d96fb  
     Environment:
       Variables:
         DB_USER: !Ref DBUser
