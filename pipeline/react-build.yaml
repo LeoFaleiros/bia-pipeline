@@ -7,7 +7,7 @@ phases:
     commands:
       - echo "Iniciando build do react..."
       - cd client
-      -npm install
+      - npm install
       - REACT_APP_API_URL=https://bia-serverless.lfaleiros-engdados.com.br SKIP_PREFLIGHT_CHECK=true npm run build
 artifacts:
   files:
